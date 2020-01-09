@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: weave-scope-ingress
+  namespace: weave
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    #nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+    - host: scope.digitalocean.local
+      http:
+        paths:
+          - backend:
+              serviceName: weave-scope-app
+              servicePort: http
+            path: /
+  tls:
+    - hosts:
+        - scope.digitalocean.local
+      secretName: weave-scope-secret

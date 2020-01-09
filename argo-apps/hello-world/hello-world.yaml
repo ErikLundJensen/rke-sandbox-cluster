@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: hello-world
+spec:
+  destination:
+    namespace: dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: demo
+    repoURL: 'https://github.com/ErikLundJensen/rke-sandbox-cluster.git'
+    targetRevision: HEAD
+  project: default
