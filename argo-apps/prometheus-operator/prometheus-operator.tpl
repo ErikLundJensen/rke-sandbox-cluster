@@ -6,12 +6,12 @@ source:
   helm:
     parameters:
       - name: prometheus.ingress.enabled
-        value: 'true'
+        value: 'false'
       - name: grafana.ingress.enabled
         value: 'true'
     values: |-
       grafana:
-        adminPassword: GENPASSWORD
+        adminPassword: {{GENPASSWORD}}
         ingress:
           enabled: true
           hosts:
