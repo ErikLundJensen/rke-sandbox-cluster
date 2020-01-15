@@ -1,6 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: local-path-storage
+  name: prometheus-operator
 spec:
     project: default
     source:
