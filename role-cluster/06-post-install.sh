@@ -36,6 +36,7 @@ do
   # Rollout new version to ensure password is reloaded
   kubectl rollout restart deployment argocd-server -n $namespace
 
+  kubectl apply -f addons/argo-cd-ingress.yaml -n $namespace
   echo "Password for Argo in namespace: $namespace is located in file ./tmp/argo-cd-password-$namespace.plain"
 done
 
