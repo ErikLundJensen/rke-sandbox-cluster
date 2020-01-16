@@ -70,3 +70,4 @@ sudo -u rkeadmin docker run hello-world
 
 # Disable swap
 swapoff -a
+echo vm.swappiness=0 | tee -a /etc/sysctl.conf
