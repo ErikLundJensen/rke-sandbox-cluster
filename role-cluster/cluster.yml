@@ -20,6 +20,15 @@ nodes:
   docker_socket: /var/run/docker.sock
   ssh_key_path: ~/.ssh/id_rsa
   ssh_agent_auth: true
+- address: 46.101.164.217
+  hostname_override: node2
+  port: "22"
+  role:
+    - worker
+  user: rkeadmin
+  docker_socket: /var/run/docker.sock
+  ssh_key_path: ~/.ssh/id_rsa
+  ssh_agent_auth: true
 services:
   kube-api:
     service_cluster_ip_range: 10.43.0.0/16
