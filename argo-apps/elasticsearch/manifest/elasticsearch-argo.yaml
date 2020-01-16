@@ -2,12 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: elasticsearch
 spec:
-  destination:
-    namespace: logging
-    server: 'https://kubernetes.default.svc'
+  project: default
   source:
-    path: stable/elasticsearch
     repoURL: 'https://github.com/helm/charts.git'
+    path: stable/elasticsearch
     targetRevision: HEAD
     helm:
       parameters:
@@ -20,5 +18,6 @@ spec:
         master:
           persistence:
             storageClass: local-path
-  project: default
-  syncPolicy: null
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logging
