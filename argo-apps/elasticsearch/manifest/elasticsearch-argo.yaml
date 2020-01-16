@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: elasticsearch
+spec:
+  destination:
+    namespace: logging
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: stable/elasticsearch
+    repoURL: 'https://github.com/helm/charts.git'
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: cluster.env.MINIMUM_MASTER_NODES
+          value: '1'
+      values: |-
+        data:
+          persistence:
+            storageClass: local-path
+  project: default
+  syncPolicy: null
