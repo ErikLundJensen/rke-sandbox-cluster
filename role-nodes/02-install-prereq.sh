@@ -77,3 +77,6 @@ echo vm.swappiness=0 | tee -a /etc/sysctl.conf
 # TODO this should probably not be done at on-premise hosts. Might need to mount instead.
 mkdir -p /filestorage
 mkdir -p /db
+
+echo Reboot node. TODO. ask before reboot..
+# reboot system

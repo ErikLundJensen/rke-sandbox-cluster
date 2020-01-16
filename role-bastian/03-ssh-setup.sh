@@ -23,6 +23,7 @@ echo "Distribute public keys to other servers in cluster"
 for server in  $(cat inventory.txt)
 do
   echo Server: $server
+  # TODO: run as rkeadmin!!
   ssh-copy-id rkeadmin@$server -f
   eval "$(ssh-agent -s)"
   ssh-add

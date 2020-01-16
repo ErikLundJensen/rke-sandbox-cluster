@@ -21,7 +21,6 @@ nodes:
   ssh_key_path: ~/.ssh/id_rsa
   ssh_agent_auth: true
 - address: 46.101.164.217
-  hostname_override: node2
   port: "22"
   role:
     - worker
