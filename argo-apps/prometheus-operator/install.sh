@@ -5,10 +5,14 @@
 
 echo REMEMBER TO LOG IN TO ARGO-CD BEFORE RUNNING THIS SCRIPT
 
+mkdir -p tmp
+
 echo -n `pwgen -s 16 -1` > ./tmp/grafana-password.plain
 sed -e s/{{GENPASSWORD}}/`cat ./tmp/grafana-password.plain`/g < manifest/prometheus-operator-argo.tpl > ./tmp/prometheus-operator-argo.yaml
 
-argocd app create prometheus-operator -f ./tmp/prometheus-operator-argo.yaml
+# Using --upsert in case of application already exists.
+
+argocd app create prometheus-operator -f ./tmp/prometheus-operator-argo.yaml --upsert
 
 
 
