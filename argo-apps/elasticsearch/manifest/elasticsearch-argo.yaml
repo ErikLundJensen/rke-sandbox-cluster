@@ -17,5 +17,8 @@ spec:
         data:
           persistence:
             storageClass: local-path
+        master:
+          persistence:
+            storageClass: local-path
   project: default
   syncPolicy: null
