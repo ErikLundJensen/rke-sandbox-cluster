@@ -6,9 +6,9 @@
 echo REMEMBER TO LOG IN TO ARGO-CD BEFORE RUNNING THIS SCRIPT
 
 echo -n `pwgen -s 16 -1` > ./tmp/grafana-password.plain
-sed -e s/{{GENPASSWORD}}/`cat ./tmp/grafana-password.plain`/g < prometheus-operator.tpl > ./tmp/prometheus-operator.yaml
+sed -e s/{{GENPASSWORD}}/`cat ./tmp/grafana-password.plain`/g < manifest/prometheus-operator-argo.tpl > ./tmp/prometheus-operator-argo.yaml
 
-argocd app create prometheus-operator -f ./tmp/prometheus-operator.yaml
+argocd app create prometheus-operator -f ./tmp/prometheus-operator-argo.yaml
 
 
 

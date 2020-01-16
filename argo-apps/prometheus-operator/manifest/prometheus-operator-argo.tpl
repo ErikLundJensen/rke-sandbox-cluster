@@ -19,11 +19,11 @@ spec:
             ingress:
               enabled: true
               hosts:
-                - 'grafana.digitalocean.local'
+                - 'grafana.apps.rke1.test.2108.dk'
               tls:
-                - secretName: prometheus-operator-ingress-secret
+                - secretName: prometheus-operator-grafana-ingress-secret
                   hosts:
-                    - grafana.digitalocean.local
+                    - grafana.apps.rke1.test.2108.dk
     destination:
       server: 'https://kubernetes.default.svc'
       namespace: monitoring

@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: kibana
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/helm/charts.git'
+    path: stable/kibana
+    targetRevision: HEAD
+    helm:
+      values: |-
+        ingress:
+          enabled: true
+          hosts:
+            - 'kibana.apps.rke1.test.2108.dk'
+          tls:
+            - secretName: kibana-ingress-secret
+              hosts:
+                - kibana.apps.rke1.test.2108.dk
+        files:
+          kibana.yml:
+            ## Default Kibana configuration from kibana-docker.
+            server.name: kibana
+            server.host: "0"
+            elasticsearch.hosts: http://elasticsearch-client:9200
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logging
