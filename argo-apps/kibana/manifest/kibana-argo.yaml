@@ -11,6 +11,10 @@ spec:
       values: |-
         ingress:
           enabled: true
+          annotations:
+            nginx.ingress.kubernetes.io/auth-type: basic
+            nginx.ingress.kubernetes.io/auth-secret: kibana-basic-auth
+            nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
           hosts:
             - 'kibana.apps.rke1.test.2108.dk'
           tls:
