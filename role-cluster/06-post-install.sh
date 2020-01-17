@@ -5,15 +5,16 @@
 # kubectl delete all --selector app=weave-scope -n weave
 
 mkdir -p tmp
-# Create secret for Weave Scope UI
-echo -n `pwgen -s 16 -1` > ./tmp/weave-scope-password.plain
-sed -e s/{{GENPASSWORD}}/`cat ./tmp/weave-scope-password.plain`/ < addons/weave-scope-secret.tpl > ./tmp/weave-scope-secret.yaml
-kubectl apply -f ./tmp/weave-scope-secret.yaml -n weave
-kubectl apply -f addons/weave-scope-1.16.yaml -n weave
+# Create secret for Weave Scope UI  -
+# TODO: requires setup of authentication. Then running through nginx we get websocket errors in the UI
+#echo -n `pwgen -s 16 -1` > ./tmp/weave-scope-password.plain
+#sed -e s/{{GENPASSWORD}}/`cat ./tmp/weave-scope-password.plain`/ < addons/weave-scope-secret.tpl > ./tmp/weave-scope-secret.yaml
+#kubectl apply -f ./tmp/weave-scope-secret.yaml -n weave
+#kubectl apply -f addons/weave-scope-1.16.yaml -n weave
 
-kubectl rollout restart deployment weave-scope-app -n weave
+#kubectl rollout restart deployment weave-scope-app -n weave
 
-echo Password for Weave Scope is located in file ./tmp/weave-scope-password.plain
+#echo Password for Weave Scope is located in file ./tmp/weave-scope-password.plain
 
 # Argo CD downloaded from https://github.com/argoproj/argo-cd/releases
 for namespace in  argocd

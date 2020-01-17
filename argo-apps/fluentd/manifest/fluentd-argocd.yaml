@@ -9,6 +9,32 @@ spec:
     repoURL: 'https://github.com/kiwigrid/helm-charts.git'
     path: charts/fluentd-elasticsearch
     targetRevision: HEAD
+    helm:
+      values: |-
+        extraConfigMaps:
+          rke.conf: |-
+            <source>
+              @type  tail
+              path  /var/lib/rancher/rke/log/*.log
+              pos_file  /var/log/rke.log.pos
+              time_format  %Y-%m-%dT%H:%M:%S.%N
+              tag  rke.*
+              format  json
+              read_from_head  true
+            </source>
+
+# TODO: add converter like the rke.** filter in this template. However, the filter in that template does not work
+# https://github.com/aiwantaozi/rancher/blob/277641db271f6c492dc404c1378fe38bd3eb4342/pkg/controllers/user/logging/generator/cluster_template.go
+
+        extraVolumeMounts:
+          - name: rke-logs
+            mountPath: /var/lib/rancher/rke/log
+            readOnly: true
+
+        extraVolumes:
+          - name: rke-logs
+            hostPath:
+              path: /var/lib/rancher/rke/log
+
   project: core
   syncPolicy: null
-

@@ -29,6 +29,7 @@ spec:
           image: nginxdemos/hello # https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-hello
           ports:
             - containerPort: 80
+#  /usr/share/nginx/html
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
