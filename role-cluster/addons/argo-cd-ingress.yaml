@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-    - host: argocd.digitalocean.local
+    - host: argocd-argocd.apps.rke1.test.2108.dk
       http:
         paths:
           - backend:
@@ -20,5 +20,5 @@ spec:
             path: /
   tls:
     - hosts:
-        - argocd.digitalocean.local
+        - argocd-argocd.apps.rke1.test.2108.dk
       secretName: argocd-secret # do not change, this is provided by Argo CD
