@@ -18,6 +18,15 @@ ssh-add ~rkeadmin/.ssh/id_rsa
 chown -R rkeadmin ~rkeadmin/.ssh
 chgrp -R rkeadmin ~rkeadmin/.ssh
 
+# Setup bash completion for kubectl
+echo 'source <(kubectl completion bash)' >>~rkeadmin/.bashrc
+echo 'alias k=kubectl' >>~rkeadmin/.bashrc
+echo 'complete -F __start_kubectl k' >>~rkeadmin/.bashrc
+
+# Setup bash completion for helm
+echo 'source <(helm completion bash)' >>~rkeadmin/.bashrc
+
+
 # TODO: note that ssh-copy-id asks for confirming "yes" and password
 echo "Distribute public keys to other servers in cluster"
 for server in  $(cat inventory.txt)
