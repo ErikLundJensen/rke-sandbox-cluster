@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: fluentd
+spec:
+  destination:
+    namespace: logging
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://github.com/kiwigrid/helm-charts.git'
+    path: charts/fluentd-elasticsearch
+    targetRevision: HEAD
+  project: core
+  syncPolicy: null
+
