@@ -31,7 +31,7 @@ nodes:
 services:
   kube-api:
     service_cluster_ip_range: 10.43.0.0/16
-     : false
+    pod_security_policy: false
     always_pull_images: false
   kube-controller:
     cluster_cidr: 10.42.0.0/16
