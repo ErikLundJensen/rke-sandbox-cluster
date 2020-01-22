@@ -53,9 +53,9 @@ authorization:
   mode: rbac
 ignore_docker_version: false
 private_registries:
-  - url: container-default.apps.rke1.test.2108.dk
-    user: nexus
-    password: {{GENPASSWORD}}
+  - url: quay.io
+    user: "a329212+rke"
+    password: {{GEN_QUAY_PASSWORD}}
 dns:
   provider: coredns
   upstreamNameservers:

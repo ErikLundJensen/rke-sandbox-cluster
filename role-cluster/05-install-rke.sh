@@ -1,9 +1,10 @@
 #!/bin/bash
 
+# The file quay-password.plain must exists before running the script
 # Create secret for Nexus
-echo -n `pwgen -s 16 -1` > ./nexus-password.plain
-htpasswd -cb auth nexus `cat ./nexus-password.plain`
-sed -e s/{{GENPASSWORD}}/`cat ./nexus-password.plain`/g < ./cluster.tpl > ./cluster.yml
+#echo -n `pwgen -s 16 -1` > ./nexus-password.plain
+#htpasswd -cb auth nexus `cat ./nexus-password.plain`
+sed -e s/{{GEN_QUAY_PASSWORD}}/`cat ./quay-password.plain`/g < ./cluster.tpl > ./cluster.yml
 
 # Have to setup agent before running ssh-add
 eval "$(ssh-agent -s)"

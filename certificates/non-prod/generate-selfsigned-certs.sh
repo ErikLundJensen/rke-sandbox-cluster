@@ -21,3 +21,21 @@ export NAMESPACE=logging
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"
 kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE} -n ${NAMESPACE}
+
+export KEY_FILE=./tmp/container-nexus-keyfile.pem
+export CERT_FILE=./tmp/container-nexus-keyfile.cert
+export HOST=container-nexus.apps.rke1.test.2108.dk
+export CERT_NAME=container-nexus-ingress-secret
+export NAMESPACE=default
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"
+kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE} -n ${NAMESPACE}
+
+export KEY_FILE=./tmp/nexus-keyfile.pem
+export CERT_FILE=./tmp/nexus-keyfile.cert
+export HOST=nexus.apps.rke1.test.2108.dk
+export CERT_NAME=nexus-ingress-secret
+export NAMESPACE=default
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"
+kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE} -n ${NAMESPACE}

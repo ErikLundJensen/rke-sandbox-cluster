@@ -6,9 +6,6 @@
 
 mkdir -p tmp
 
-# Create secret for Nexus
-kubectl create secret generic nexus-basic-auth --from-file=auth -n ingress-nginx
-
 # Create secret for Weave Scope UI  -
 # TODO: requires setup of authentication. Then running through nginx we get websocket errors in the UI
 #echo -n `pwgen -s 16 -1` > ./tmp/weave-scope-password.plain
