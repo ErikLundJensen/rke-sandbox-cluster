@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Have to setup agent before running ssh-add
+# Create secret for Nexus
+echo -n `pwgen -s 16 -1` > ./nexus-password.plain
+htpasswd -cb auth nexus `cat ./nexus-password.plain`
+sed -e s/{{GENPASSWORD}}/`cat ./nexus-password.plain`/g < cluster.tpl > .cluster.yaml
 
+# Have to setup agent before running ssh-add
 eval "$(ssh-agent -s)"
 ssh-add ~rkeadmin/.ssh/id_rsa
 

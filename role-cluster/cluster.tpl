@@ -52,6 +52,10 @@ ssh_agent_auth: true
 authorization:
   mode: rbac
 ignore_docker_version: false
+private_registries:
+  - url: container-default.apps.rke1.test.2108.dk
+    user: nexus
+    password: {{GENPASSWORD}}
 dns:
   provider: coredns
   upstreamNameservers:
