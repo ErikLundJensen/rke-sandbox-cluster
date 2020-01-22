@@ -33,6 +33,10 @@ curl -LO -sSL https://github.com/argoproj/argo-cd/releases/download/$VERSION/arg
 mv argocd-linux-amd64 /usr/local/bin/argocd
 chmod +x /usr/local/bin/argocd
 
+# Get Kompose utility - a tool for converting Docker Compose to Kubernetes yaml
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
+chmod 755 kompose
+mv ./kompose /usr/local/bin/kompose
 
 
 
