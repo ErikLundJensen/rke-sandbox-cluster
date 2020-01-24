@@ -4,6 +4,10 @@ items:
 - apiVersion: v1
   kind: Namespace
   metadata:
+    name: cert-manager
+- apiVersion: v1
+  kind: Namespace
+  metadata:
     name: local-path-storage
 - apiVersion: v1
   kind: Namespace
@@ -33,5 +37,3 @@ items:
   kind: Namespace
   metadata:
     name: prod
-
-
