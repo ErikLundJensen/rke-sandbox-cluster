@@ -39,12 +39,3 @@ export NAMESPACE=default
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"
 kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE} -n ${NAMESPACE}
-
-export KEY_FILE=./tmp/driverlicense-keyfile.pem
-export CERT_FILE=./tmp/driverlicense-keyfile.cert
-export HOST=driverlicense-dev.apps.rke1.test.2108.dk
-export CERT_NAME=driverlicense-ingress-secret
-export NAMESPACE=dev
-
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"
-kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE} -n ${NAMESPACE}
