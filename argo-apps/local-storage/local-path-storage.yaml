@@ -13,10 +13,6 @@ data:
                     "paths":["/filestorage"]
             },
             {
-                    "node":"167.71.49.188",
-                    "paths":["/filestorage"]
-            },
-            {
                     "node":"46.101.164.217",
                     "paths":["/filestorage"]
             }
