@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: elasticsearch-exporter
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/helm/charts.git'
+    path: stable/elasticsearch-exporter
+    targetRevision: HEAD
+    helm:
+      values: |-
+        es:
+          uri: http://elasticsearch-client:9200
+          prometheusRule:
+            enabled: true
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logging
