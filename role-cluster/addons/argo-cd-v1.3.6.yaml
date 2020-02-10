@@ -2746,7 +2746,7 @@ spec:
         - "20"
         - --operation-processors
         - "10"
-        image: argoproj/argocd:v1.3.6
+        image: fm-dkk-rep01-d:8085/argoproj/argocd:v1.3.6
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -2786,7 +2786,7 @@ spec:
       - command:
         - /shared/argocd-util
         - rundex
-        image: quay.io/dexidp/dex:v2.14.0
+        image: fm-dkk-rep01-d:8085/dexidp/dex:v2.14.0
         imagePullPolicy: Always
         name: dex
         ports:
@@ -2800,7 +2800,7 @@ spec:
         - cp
         - /usr/local/bin/argocd-util
         - /shared
-        image: argoproj/argocd:v1.3.6
+        image: fm-dkk-rep01-d:8085/argoproj/argocd:v1.3.6
         imagePullPolicy: Always
         name: copyutil
         volumeMounts:
@@ -2834,7 +2834,7 @@ spec:
         - ""
         - --appendonly
         - "no"
-        image: redis:5.0.3
+        image: fm-dkk-rep01-d:8085/redis:5.0.3
         imagePullPolicy: Always
         name: redis
         ports:
@@ -2864,7 +2864,7 @@ spec:
         - argocd-repo-server
         - --redis
         - argocd-redis:6379
-        image: argoproj/argocd:v1.3.6
+        image: fm-dkk-rep01-d:8085/argoproj/argocd:v1.3.6
         imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 5
@@ -2915,7 +2915,7 @@ spec:
         - argocd-server
         - --staticassets
         - /shared/app
-        image: argoproj/argocd:v1.3.6
+        image: fm-dkk-rep01-d:8085/argoproj/argocd:v1.3.6
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
