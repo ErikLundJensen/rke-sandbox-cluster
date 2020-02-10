@@ -14,7 +14,7 @@ rke up
 
 # Setup kube config
 mkdir ~rkeadmin/.kube
-mv  kube_config_cluster.yml ~rkeadmin/.kube/config
+cp  kube_config_cluster.yml ~rkeadmin/.kube/config
 
 echo Backup of file cluster.rkestate
 
